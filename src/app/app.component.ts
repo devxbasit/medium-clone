@@ -12,6 +12,6 @@ export class AppComponent implements OnInit {
   userService = inject(UserService);
 
   ngOnInit(): void {
-    //this.userService.populate();
+    this.userService.populate();
   }
 }

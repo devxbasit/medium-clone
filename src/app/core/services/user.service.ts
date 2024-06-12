@@ -1,8 +1,9 @@
-import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject, distinctUntilChanged, map } from 'rxjs';
+import { DestroyRef, inject, Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, ReplaySubject, distinctUntilChanged, map, tap } from 'rxjs';
 import { User } from '../models/user.model';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -12,22 +13,27 @@ export class UserService {
   public currentUser$: Observable<User> = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
   private isAuthenticatedSubject: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
+  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable().pipe(tap((data) => console.log(`service is auth ${data}`)));
 
   private apiService: ApiService = inject(ApiService);
   private jwtService: JwtService = inject(JwtService);
+  dRef = inject(DestroyRef);
 
   populate() {
     const token = this.jwtService.getToken();
+
     if (token) {
-      this.apiService.get('/user').subscribe({
-        next: (data) => {
-          this.setAuth({ ...data.user, token: token });
-        },
-        error: () => {
-          this.purgeAuth();
-        },
-      });
+      this.apiService
+        .get('/user')
+        .pipe(takeUntilDestroyed(this.dRef))
+        .subscribe({
+          next: (data) => {
+            this.setAuth({ ...data.user, token: token });
+          },
+          error: () => {
+            this.purgeAuth();
+          },
+        });
     } else {
       this.purgeAuth();
     }

@@ -1,3 +1,13 @@
-<a routerLink="/">Home</a>
-<a routerLink="/login">Sign In</a>
-<a routerLink="/register">Sign Up</a>
+<h5>Medium Clone app using RealWorl Conduit</h5>
+
+<div *appShowAuthed="false">
+  <a routerLink="/login">Sign In</a>
+  <a routerLink="/register">Sign Up</a>
+</div>
+
+<div *appShowAuthed="true">
+  <a routerLink="/">home</a>
+  <a routerLink="/register">new Artile</a>
+  <a routerLink="/login">Setting</a>
+  <a routerLink="/register">Welcoms User</a>
+</div>

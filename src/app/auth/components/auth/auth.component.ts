@@ -58,11 +58,9 @@ export class AuthComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.dRef))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.router.navigateByUrl('/');
         },
         error: (err: any) => {
-          console.log(err);
           this.errors = err;
           this.isFormSubmitting = false;
           this.cdRef.markForCheck();

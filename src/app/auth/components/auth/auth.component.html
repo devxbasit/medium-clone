@@ -10,7 +10,7 @@
   <form [formGroup]="authForm" (ngSubmit)="onAuthFormSubmit()">
     <input *ngIf="!isLoginMode" type="text" formControlName="username" placeholder="Enter Username" />
     <br />
-    <input type="text" formControlName="email" placeholder="Enter Email" />
+    <input type="email" formControlName="email" placeholder="Enter Email" />
     <br />
     <input type="password" formControlName="password" placeholder="Enter Password" />
     <br />
