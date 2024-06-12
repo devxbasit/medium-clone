@@ -1,0 +1,12 @@
+<h1>{{ this.title }}</h1>
+
+<div>
+  <a routerLink="/register" *ngIf="isLoginMode">New User? Create Account Here</a>
+  <a routerLink="/login" *ngIf="!isLoginMode">Existing User? Login Here</a>
+</div>
+<form [formGroup]="authForm" (ngSubmit)="onAuthFormSubmit()">
+  <input *ngIf="!isLoginMode" type="text" formControlName="username" />
+  <input type="text" formControlName="email" />
+  <input type="password" formControlName="password" />
+  <button [disabled]="!authForm.valid">Submit</button>
+</form>

@@ -1,5 +1,5 @@
 export const environment = {
   jwtTokenKey: 'JWT_TOKEN',
-  apiBaseUrl: '',
+  apiBaseUrl: 'https://api.realworld.io/api',
   isProduction: true,
 };

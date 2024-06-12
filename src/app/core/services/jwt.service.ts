@@ -11,7 +11,7 @@ export class JwtService {
     window.localStorage[environment.jwtTokenKey] = token;
   }
 
-  clearToken() {
+  destroyToken() {
     window.localStorage.removeItem(environment.jwtTokenKey);
   }
 }
