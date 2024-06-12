@@ -4,10 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { NoAuthGuard } from './guards/no-auth-guard.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [AuthComponent],
-  imports: [CommonModule, ReactiveFormsModule, AuthRoutingModule],
+  imports: [CommonModule, SharedModule, ReactiveFormsModule, AuthRoutingModule],
   exports: [AuthRoutingModule],
   providers: [NoAuthGuard],
 })

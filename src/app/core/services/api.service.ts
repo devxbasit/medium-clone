@@ -18,7 +18,6 @@ export class ApiService {
   }
 
   post(path: string, body: Object = {}): Observable<any> {
-    console.log(body);
     return this.httpClient.post(`${environment.apiBaseUrl}${path}`, JSON.stringify(body)).pipe(catchError(this.formatErrors));
   }
 
@@ -30,8 +29,8 @@ export class ApiService {
     return this.httpClient.delete(`${environment.apiBaseUrl}${path}`).pipe(catchError(this.formatErrors));
   }
 
-  private formatErrors(error: HttpErrorResponse) {
-    console.log('API_Service -------> ', error);
-    return throwError(error.error);
+  private formatErrors(httpErrorResponse: HttpErrorResponse) {
+    console.log('API_Service_ERROR -------> ', httpErrorResponse);
+    return throwError(httpErrorResponse.error);
   }
 }
