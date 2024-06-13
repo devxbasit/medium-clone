@@ -6,12 +6,12 @@ import { ArticlesService } from 'src/app/core/services/articles.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
-  selector: 'app-favorite-buttton',
+  selector: 'app-favorite-button',
   templateUrl: './favorite-buttton.component.html',
   styleUrls: ['./favorite-buttton.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FavoriteButttonComponent {
+export class FavoriteButtonComponent {
   @Input({ required: true }) article: Article = {} as Article;
   @Output() toggle = new EventEmitter<boolean>();
 
