@@ -1,4 +1,4 @@
-<div class="auth-container">
+<div>
   <h1>{{ this.title }}</h1>
   <hr />
 
@@ -8,12 +8,12 @@
     <a routerLink="/login" *ngIf="!isLoginMode">Existing User? Login Here</a>
   </div>
   <form [formGroup]="authForm" (ngSubmit)="onAuthFormSubmit()">
-    <input *ngIf="!isLoginMode" type="text" formControlName="username" placeholder="Enter Username" />
+    <input [disabled]="isFormSubmitting" *ngIf="!isLoginMode" type="text" formControlName="username" placeholder="Enter Username" />
     <br />
-    <input type="email" formControlName="email" placeholder="Enter Email" />
+    <input [disabled]="isFormSubmitting" type="email" formControlName="email" placeholder="Enter Email" />
     <br />
-    <input type="password" formControlName="password" placeholder="Enter Password" />
+    <input [disabled]="isFormSubmitting" type="password" formControlName="password" placeholder="Enter Password" />
     <br />
-    <button [disabled]="!authForm.valid">Submit</button>
+    <button [disabled]="isFormSubmitting" [disabled]="!authForm.valid">Submit</button>
   </form>
 </div>

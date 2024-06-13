@@ -30,7 +30,8 @@ export class ApiService {
   }
 
   private formatErrors(httpErrorResponse: HttpErrorResponse) {
-    console.log('API_Service_ERROR -------> ', httpErrorResponse);
+    console.log('API_Service_ERROR -------> Below');
+    console.log(httpErrorResponse);
     return throwError(httpErrorResponse.error);
   }
 }

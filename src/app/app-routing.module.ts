@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './layout/header/header.component';
+import { NotFound404Component } from './layout/not-found-404/not-found-404.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'settings', loadChildren: () => import('./settings/settings.module').then((m) => m.SettingsModule) },
+  { path: '**', component: NotFound404Component },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

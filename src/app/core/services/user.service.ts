@@ -40,12 +40,15 @@ export class UserService {
   }
 
   setAuth(user: User) {
+    console.log('currenc utser =------- >', user);
     this.jwtService.saveToken(user.token);
     this.currentUserSubject.next(user);
     this.isAuthenticatedSubject.next(true);
   }
 
   purgeAuth() {
+    console.log('current user =------- >', {});
+
     this.jwtService.destroyToken();
     this.currentUserSubject.next({} as User);
     this.isAuthenticatedSubject.next(false);
@@ -67,7 +70,7 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    return this.apiService.put('/users', { user: user }).pipe(
+    return this.apiService.put('/user', { user: user }).pipe(
       map((data) => {
         this.currentUserSubject.next(data.user);
         return data.user;
