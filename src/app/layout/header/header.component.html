@@ -7,10 +7,10 @@
   </div>
 
   <div *appShowAuthed="true">
-    <a routerLink="/">home</a>
-    <a routerLink="/settings">settings</a>
-    <a routerLink="/profile">profile</a>
-    <a routerLink="/editor">editor</a>
-    <a routerLink="/article">article</a>
+    <a routerLink="/">Home</a>
+    <a routerLink="/article">New Article</a>
+    <a routerLink="/settings">Settings</a>
+
+    <a routerLink="/editor"><img width="40px" [src]="currentUser?.image || 'https://static.productionready.io/images/smiley-cyrus.jpg'" alt="" /> {{ currentUser?.username }}</a>
   </div>
 </div>
