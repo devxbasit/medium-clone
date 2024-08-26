@@ -13,6 +13,16 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [ListErrorsComponent, ShowAuthedDirective, ArticleListComponent, ArticleMetaComponent, ArticlePreviewComponent, FavoriteButtonComponent, FollowButtonComponent],
   imports: [CommonModule, RouterModule],
-  exports: [ListErrorsComponent, ShowAuthedDirective, ReactiveFormsModule, CommonModule],
+  exports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ListErrorsComponent,
+    ShowAuthedDirective,
+    ArticleListComponent,
+    ArticleMetaComponent,
+    ArticlePreviewComponent,
+    FavoriteButtonComponent,
+    FollowButtonComponent,
+  ],
 })
 export class SharedModule {}
